@@ -4,6 +4,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import auth.Auth;
+
 public class Main implements ActionListener {
 	JTextField userText, passwordText;
 	JButton loginButton;
@@ -12,7 +14,7 @@ public class Main implements ActionListener {
 		// 创建 JFrame 实例
         JFrame frame = new JFrame("图书管理系统");
         // Setting the width and height of frame
-        frame.setSize(350, 200);
+        frame.setSize(1000, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("图书管理系统");
 
@@ -73,11 +75,14 @@ public class Main implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		
 		// 用户登录
 		String username = userText.getText();
 		String password = passwordText.getText();
-		JOptionPane.showMessageDialog(null, password, "Debug", JOptionPane.PLAIN_MESSAGE);	
+		if (Auth.login(username, password)) {
+			JOptionPane.showMessageDialog(null, "登录成功！", "Debug", JOptionPane.PLAIN_MESSAGE);	
+		} else {
+			JOptionPane.showMessageDialog(null, "用户名或密码错误！", "Debug", JOptionPane.PLAIN_MESSAGE);	
+		}
 	}
 
 }
