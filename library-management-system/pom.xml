@@ -36,7 +36,7 @@
           </execution>
         </executions>
         <configuration>
-          <mainClass>yanghongquan.library_management_system.App</mainClass>
+          <mainClass>yanghongquan.library_management_system.Main</mainClass>
         </configuration>
       </plugin>
     </plugins>
