@@ -23,7 +23,7 @@ public class Auth {
 
         } catch (Exception e) {  
             e.printStackTrace();  
-        }finally{  
+        } finally{  
             MySQLUtil.closeConnection(conn);  
         }  
 		return isAuthenticated;
