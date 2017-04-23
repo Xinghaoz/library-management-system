@@ -28,3 +28,21 @@ INSERT INTO book VALUES(2, "Book2", "Bob", "B", now(), 25.49, "Roman");
 INSERT INTO book VALUES(3, "Book3", "Charlie", "C", now(), 25.36, "Roman");
 INSERT INTO book VALUES(4, "Book4", "David", "D", now(), 15.2, "Roman");
 INSERT INTO book VALUES(5, "Book5", "Frank", "E", now(), 5.49, "Roman");
+
+CREATE TABLE IF NOT EXISTS reader (
+    id INTEGER,
+    name VARCHAR(8),
+    gender VARCHAR(2),
+    student_number VARCHAR(6),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS borrow (
+    reader_id INTEGER,
+    book_id INTEGER,
+    borrow_date Date NOT NULL,
+    return_date Date,
+    PRIMARY KEY (reader_id, book_id),
+    FOREIGN KEY (reader_id) REFERENCES reader (id),
+    FOREIGN KEY (book_id) REFERENCES book (id)
+);

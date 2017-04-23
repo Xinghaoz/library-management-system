@@ -12,18 +12,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import yanghongquan.library_management_system.BookTable;
-
 public class BookShowPanel extends JPanel implements ActionListener {
 	JButton backButton;
-	BookPanel previousLevel;
+	BookMenu previousLevel;
 	BookTable table;
 	
-	public BookShowPanel(BookPanel previousLevel) {
+	public BookShowPanel(BookMenu previousLevel) {
 		this.previousLevel = previousLevel;
 				
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		
 		
 //        title = new JLabel("图书管理:");
 //        panel.add(title);

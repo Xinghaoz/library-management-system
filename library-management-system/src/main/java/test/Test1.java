@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 import auth.Auth;
 import book_management.BookManager;
-import yanghongquan.library_management_system.BookTable;
+import book_management.BookTable;
 import yanghongquan.library_management_system.MainMenu;
 
 public class Test1 extends JFrame implements ActionListener {

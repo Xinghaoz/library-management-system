@@ -1,6 +1,7 @@
 package book_management;
 
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
@@ -12,8 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import yanghongquan.library_management_system.BookTable;
-
 public class BookAddPanel extends JPanel implements ActionListener {
 //	JButton addButton, showButton, modifyButton, deleteButton, searchButton, sortButton, backButton;
 	JButton commitButton, backButton;
@@ -21,10 +20,10 @@ public class BookAddPanel extends JPanel implements ActionListener {
 	JLabel title;
 	JTextField[] texts;
 	JPanel panel;
-	BookPanel previousLevel;
+	BookMenu previousLevel;
 	CardLayout card;
 	
-	public BookAddPanel(BookPanel previousLevel) {
+	public BookAddPanel(BookMenu previousLevel) {
 		this.previousLevel = previousLevel;
 		
 		card = new CardLayout(); 
@@ -35,22 +34,30 @@ public class BookAddPanel extends JPanel implements ActionListener {
 		
 		add("mainPanel", panel);
 		
-        title = new JLabel("图书管理:");
+        title = new JLabel("添加图书:");
         panel.add(title);
         
-        String[] strs = {"书号", "书名", "作者", "出版", "日期", "定价", "类别"};
+        String[] strs = {"书号：", "书名：", "作者：", "出版：", "日期：", "定价：", "类别："};
         
         labels = new JLabel[7];
         for (int i = 0; i < labels.length; i++) {
         	labels[i] = new JLabel(strs[i]);
-        	panel.add(labels[i]);
+        	labels[i].setPreferredSize(new Dimension(50, 25));
+//        	panel.add(labels[i]);
         }
         
         texts = new JTextField[7];
         for (int i = 0; i < labels.length; i++) {
         	texts[i] = new JTextField();
-        	panel.add(texts[i]);
-        	
+        	texts[i].setPreferredSize(new Dimension(150, 25));
+//        	panel.add(texts[i]);
+        }
+        
+        for (int i = 0; i < labels.length; i++) {
+        	JPanel temp = new JPanel();
+        	temp.add(labels[i]);
+        	temp.add(texts[i]);
+        	panel.add(temp);
         }
 		
         commitButton = new JButton("确认");	

@@ -5,17 +5,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import book_management.BookPanel;
+import book_management.BookMenu;
 
 public class MainMenu extends JPanel implements ActionListener {
 	JButton bookManageButton, readerManageButton, borrowManageButton, exitButton;
 	JLabel userLabel;
 	JPanel panel;
-	BookPanel bookPanel;
+	BookMenu bookPanel;
 	CardLayout card;
 	
 	public MainMenu() {
-		bookPanel = new BookPanel(this);
+		bookPanel = new BookMenu(this);
 		card = new CardLayout(); 
 		panel = new JPanel();
 		

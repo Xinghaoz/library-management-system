@@ -9,13 +9,13 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import auth.Auth;
-import book_management.BookPanel;
+import book_management.BookMenu;
 
 public class Main implements ActionListener {
 	JFrame frame;
 	JPanel panel, loginPanel;
 	JTextField userText, passwordText;
-	JButton loginButton, bookManageButton, readerManageButton, borrowManageButton, exitButton;
+	JButton loginButton;
 //	FlowLayout layout = new FlowLayout(); 
     CardLayout card; 
 
@@ -38,9 +38,6 @@ public class Main implements ActionListener {
         panel.add("loginPanel", loginPanel);
         panel.add("mainMenu", mainMenu);        
         frame.add(panel);
-//        frame.add(mainMenu);
-        
-//        panel.setLayout(null);
         
         JLabel userLabel = new JLabel("用户名:");
         userLabel.setBounds(10,20,80,25);
@@ -62,10 +59,6 @@ public class Main implements ActionListener {
         loginButton.setBounds(10, 80, 80, 25);
         loginButton.addActionListener(this);
         loginPanel.add(loginButton);
-        
-//        JLabel t = new JLabel("Test:");
-//        t.setBounds(10,100,80,25);
-//        loginPanel.add(t);
         
         frame.setVisible(true);
 	}
@@ -96,8 +89,6 @@ public class Main implements ActionListener {
 					JOptionPane.showMessageDialog(null, "用户名或密码错误！", "系统信息", JOptionPane.PLAIN_MESSAGE);	
 				}
 			}*/
-		} else if (event.getSource() == exitButton) {
-			System.exit(0);
 		}
 	}
 	

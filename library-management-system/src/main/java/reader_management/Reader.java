@@ -10,10 +10,29 @@ public class Reader {
 	private String name;
 	private String gender;
 	private String studentNumber;
-	private List<RentBook> borrowedBooks;
-	
-	class RentBook extends Book {
-		private Date borrowDate;
-		private Date returnDate;
+	public String getId() {
+		return id;
 	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getStudentNumber() {
+		return studentNumber;
+	}
+	public void setStudentNumber(String studentNumber) {
+		this.studentNumber = studentNumber;
+	}
+
 }

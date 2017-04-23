@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import book_management.BookManager;
-import yanghongquan.library_management_system.BookTable;
+import book_management.BookTable;
 import yanghongquan.library_management_system.MainMenu;
 
 public class TestPane implements ActionListener {

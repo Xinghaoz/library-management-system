@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import util.MySQLUtil;
 
 public class BookManager {
@@ -38,23 +40,30 @@ public class BookManager {
 		return true;
 	}
 	
-	public static void delete(String id) {
+	public static boolean delete(String id) {
 		Connection conn = MySQLUtil.getConnection();
-		String sql = "DELETE FROM book WHERE id = " + id + ";";
+		String sql = "SELECT * FROM book WHERE id = " + id + ";";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();  
+			if (rs.next()) {
+				sql = "DELETE FROM book WHERE id = " + id + ";";
+				ps = conn.prepareStatement(sql);
+				ps.execute();  
+				return true;
+			} else return false;
 		} catch (Exception e) {  
             e.printStackTrace();  
         } finally{  
             MySQLUtil.closeConnection(conn);  
         }		
+		return false;
 	}
 	
 	public static List<Book> getAll() {
 		List<Book> result = new ArrayList<Book>();
 		Connection conn = MySQLUtil.getConnection();
-		String sql = "SELECT * FROM book LIMIT 10;";
+		String sql = "SELECT * FROM book;";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery(); 
@@ -75,6 +84,33 @@ public class BookManager {
             MySQLUtil.closeConnection(conn);  
         }
 		return result;
+	}
+	
+	public static Book get(String queryId) {
+//		List<Book> result = new ArrayList<Book>();
+		Connection conn = MySQLUtil.getConnection();
+		String sql = "SELECT * FROM book WHERE id = " + queryId + ";";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery(); 
+			while (rs.next()) {
+				String id = rs.getString("id");
+				String name = rs.getString("name");
+				String author = rs.getString("author");
+				String publisher = rs.getString("publisher");
+				Date date = (Date) rs.getDate("date");
+				float price = rs.getFloat("price");
+				String category = rs.getString("category");
+				Book book = new Book(id, name, author, publisher, date, price, category);
+//				result.add(book);
+				return book;
+			}
+		} catch (Exception e) {  
+            e.printStackTrace();  
+        } finally{  
+            MySQLUtil.closeConnection(conn);  
+        }
+		return null;
 	}
 	
 	public static void modify(String id, Book book) {
@@ -104,6 +140,41 @@ public class BookManager {
 		List<Book> result = new ArrayList<>();
 		Connection conn = MySQLUtil.getConnection();
 		String sql = "SELECT * FROM book WHERE " + key + " LIKE \"%" + value + "%\";";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery(); 
+			while (rs.next()) {
+				String id = rs.getString("id");
+				String name = rs.getString("name");
+				String author = rs.getString("author");
+				String publisher = rs.getString("publisher");
+				Date date = (Date) rs.getDate("date");
+				float price = rs.getFloat("price");
+				String category = rs.getString("category");
+				Book book = new Book(id, name, author, publisher, date, price, category);
+				result.add(book);
+			}
+			
+		} catch (Exception e) {  
+            e.printStackTrace();  
+        } finally{  
+            MySQLUtil.closeConnection(conn);  
+        }
+		return result;
+	}
+	
+	public static List<Book> searchPrice(String from, String to) {
+		List<Book> result = new ArrayList<>();
+		try {
+			Float.valueOf(from);
+			Float.valueOf(to);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "输入不合法！", "系统信息", JOptionPane.PLAIN_MESSAGE);
+			return result;
+		}
+		
+		Connection conn = MySQLUtil.getConnection();
+		String sql = "SELECT * FROM book WHERE price >= " + from + " && price <= " + to + ";";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery(); 
