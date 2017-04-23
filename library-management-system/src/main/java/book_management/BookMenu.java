@@ -26,23 +26,13 @@ public class BookMenu extends JPanel implements ActionListener {
 		
 		card = new CardLayout(); 
 		panel = new JPanel();
-//		bookAddPanel = new BookAddPanel(this);
-//		bookShowPanel = new BookShowPanel(this);
-//		bookDeletePanel = new BookDeletePanel(this);
-//		bookModifyPanel = new BookModifyPanel(this);
 		
 		setLayout(card);		
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
 		add("mainPanel", panel);
-//		add("bookAddPanel", bookAddPanel);
-//		add("bookModifyPanel", bookModifyPanel);
-//		add("bookShowPanel", bookShowPanel);
-//		add("bookDeletePanel", bookDeletePanel);
-//		add("previousLevel", previousLevel);
 		
         userLabel = new JLabel("图书管理:");
-//        userLabel.setBounds(10,20,80,25);
         panel.add(userLabel);
 
         showButton = new JButton("显示记录");
@@ -98,10 +88,4 @@ public class BookMenu extends JPanel implements ActionListener {
 	public CardLayout getCard() {
 		return this.card;
 	}
-
-	public static void main(String[] args) {
-		Main main = new Main();
-
-	}
-
 }

@@ -6,40 +6,45 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import book_management.BookMenu;
+import reader_management.ReaderMenu;
 
 public class MainMenu extends JPanel implements ActionListener {
 	JButton bookManageButton, readerManageButton, borrowManageButton, exitButton;
 	JLabel userLabel;
 	JPanel panel;
-	BookMenu bookPanel;
 	CardLayout card;
+	BookMenu bookMenu;
+	ReaderMenu readerMenu;
 	
 	public MainMenu() {
-		bookPanel = new BookMenu(this);
 		card = new CardLayout(); 
 		panel = new JPanel();
+		bookMenu = new BookMenu(this);
+		readerMenu = new ReaderMenu(this);
 		
 		setLayout(card);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
 		add("mainMenu", panel);
-		add("bookPanel", bookPanel);
+		add("bookMenu", bookMenu);
+		add("readerMenu", readerMenu);
 		
         userLabel = new JLabel("主菜单:");        
         bookManageButton = new JButton("图书管理");
 		readerManageButton = new JButton("读者管理");
 		borrowManageButton = new JButton("借还管理");
 		exitButton = new JButton("退出系统");
-		exitButton.addActionListener(this);
 		
-		// BorderLayout.CENTER
+		exitButton.addActionListener(this);
+		bookManageButton.addActionListener(this);
+		readerManageButton.addActionListener(this);
+		
 		panel.add(userLabel);
 		panel.add(bookManageButton);
 		panel.add(readerManageButton);
 		panel.add(borrowManageButton);
 		panel.add(exitButton);
 		
-		bookManageButton.addActionListener(this);
 	}
 	
 	public void actionPerformed(ActionEvent event) {
@@ -47,7 +52,9 @@ public class MainMenu extends JPanel implements ActionListener {
 			System.out.println("Exit!");
 			System.exit(0);
 		} else if (event.getSource() == bookManageButton) {
-			card.show(this, "bookPanel");
+			card.show(this, "bookMenu");
+		} else if (event.getSource() == readerManageButton) {
+			card.show(this, "readerMenu");
 		}
 	}
 	
@@ -56,13 +63,15 @@ public class MainMenu extends JPanel implements ActionListener {
 	}
 
 	public static void main(String[] args) {
-		JFrame frame = new JFrame("Test");
-		frame.setSize(1000, 1000);
-		JPanel menu = new MainMenu();
-//		menu.setLayout(null);
+		Main main = new Main();
+		
+//		JFrame frame = new JFrame("Test");
+//		frame.setSize(1000, 1000);
+//		JPanel menu = new MainMenu();
+////		menu.setLayout(null);
+////		frame.add(menu);
 //		frame.add(menu);
-		frame.add(menu);
-		frame.setVisible(true);
+//		frame.setVisible(true);
 	}
 
 }

@@ -10,6 +10,14 @@ public class Reader {
 	private String name;
 	private String gender;
 	private String studentNumber;
+	
+	public Reader(String id, String name, String gender, String studentNumber) {
+		this.id = id;
+		this.name = name;
+		this.gender = gender;
+		this.studentNumber = studentNumber;
+	}
+	
 	public String getId() {
 		return id;
 	}

@@ -1,13 +1,41 @@
 package reader_management;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
+import book_management.Book;
 import util.MySQLUtil;
 
 public class ReaderManager {
-	public static boolean add(Reader reader) {
+	public static List<Reader> getAll() {
+		List<Reader> result = new ArrayList<Reader>();
+		Connection conn = MySQLUtil.getConnection();
+		String sql = "SELECT * FROM reader;";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery(); 
+			while (rs.next()) {
+				String id = rs.getString("id");
+				String name = rs.getString("name");
+				String gender = rs.getString("gender");
+				String studentNumber = rs.getString("student_number");
+
+				Reader reader = new Reader(id, name, gender, studentNumber);
+				result.add(reader);
+			}
+		} catch (Exception e) {  
+            e.printStackTrace();  
+        } finally{  
+            MySQLUtil.closeConnection(conn);  
+        }
+		return result;
+	}
+	
+	public static int add(Reader reader) {
 		Connection conn = MySQLUtil.getConnection(); 
 		String sql = "SELECT * FROM reader WHERE id = " + reader.getId() + ";";
 		
@@ -15,7 +43,7 @@ public class ReaderManager {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();  
 	        if (rs.next()){  
-	        	return false;
+	        	return 1;
 	        } 
 	        sql = "INSERT INTO reader VALUES (?, ?, ?, ?);";
 	        ps = conn.prepareStatement(sql);
@@ -26,10 +54,11 @@ public class ReaderManager {
 	        ps.execute();
 		} catch (Exception e) {  
             e.printStackTrace();  
+            return 2;
         } finally{  
             MySQLUtil.closeConnection(conn);  
         }		
-		return true;
+		return 0;
 	}
 	
 	public static boolean delete(String id) {

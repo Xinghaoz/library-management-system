@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import util.MySQLUtil;
 
 public class BookManager {
-	public static boolean add(Book book) {
+	public static int add(Book book) {
 		Connection conn = MySQLUtil.getConnection(); 
 		String sql = "SELECT * FROM book WHERE id = " + book.getId() + ";";
 		
@@ -20,7 +20,7 @@ public class BookManager {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();  
 	        if (rs.next()){  
-	        	return false;
+	        	return 1;
 	        } 
 	        sql = "INSERT INTO book VALUES (?, ?, ?, ?, ?, ?, ?);";
 	        ps = conn.prepareStatement(sql);
@@ -34,10 +34,11 @@ public class BookManager {
 	        ps.execute();
 		} catch (Exception e) {  
             e.printStackTrace();  
+            return 2;
         } finally{  
             MySQLUtil.closeConnection(conn);  
         }		
-		return true;
+		return 0;
 	}
 	
 	public static boolean delete(String id) {

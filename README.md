@@ -46,3 +46,6 @@ CREATE TABLE IF NOT EXISTS borrow (
     FOREIGN KEY (reader_id) REFERENCES reader (id),
     FOREIGN KEY (book_id) REFERENCES book (id)
 );
+
+INSERT INTO reader VALUES(1, "Alice", "W", "611731");
+INSERT INTO reader VALUES(2, "Bob", "M", "152133");
