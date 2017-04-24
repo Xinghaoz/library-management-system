@@ -15,7 +15,6 @@ public class ReaderTable extends JPanel {
 	public ReaderTable(List<Reader> readers) {
 		Object[][] data = new Object[readers.size()][4];
 		
-//		System.out.println("Create table");
 		int i = 0;
 		for (Reader reader : readers) {
 			data[i][0] = reader.getId();
@@ -28,7 +27,7 @@ public class ReaderTable extends JPanel {
 		String[] columns = {"卡号", "姓名", "性别", "学(工)号"};
 		table = new JTable(data, columns);
 		table.setEnabled(false);
-		table.setPreferredScrollableViewportSize(new Dimension(360,100));
+		table.setPreferredScrollableViewportSize(new Dimension(360,250));
 		JScrollPane scrollPane = new JScrollPane(table);
 		add(scrollPane);
 	}

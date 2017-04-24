@@ -78,6 +78,8 @@ public class ReaderAddPanel extends JPanel implements ActionListener {
 
 			if (id.isEmpty()) {
 				JOptionPane.showMessageDialog(null, "卡号不能为空！", "系统信息", JOptionPane.PLAIN_MESSAGE);
+			} else if (!studentNumber.matches("[0-9]{6}")) {
+				JOptionPane.showMessageDialog(null, "学(工)号必须为6位纯数字！", "系统信息", JOptionPane.PLAIN_MESSAGE);
 			} else {			
 				Reader reader = new Reader(id, name, gender, studentNumber);
 				int result = ReaderManager.add(reader);

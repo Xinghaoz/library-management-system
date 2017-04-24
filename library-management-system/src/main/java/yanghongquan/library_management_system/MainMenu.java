@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import book_management.BookMenu;
+import borrow_management.BorrowMenu;
 import reader_management.ReaderMenu;
 
 public class MainMenu extends JPanel implements ActionListener {
@@ -15,12 +16,14 @@ public class MainMenu extends JPanel implements ActionListener {
 	CardLayout card;
 	BookMenu bookMenu;
 	ReaderMenu readerMenu;
+	BorrowMenu borrowMenu;
 	
 	public MainMenu() {
 		card = new CardLayout(); 
 		panel = new JPanel();
 		bookMenu = new BookMenu(this);
 		readerMenu = new ReaderMenu(this);
+		borrowMenu = new BorrowMenu(this);
 		
 		setLayout(card);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -28,6 +31,7 @@ public class MainMenu extends JPanel implements ActionListener {
 		add("mainMenu", panel);
 		add("bookMenu", bookMenu);
 		add("readerMenu", readerMenu);
+		add("borrowMenu", borrowMenu);
 		
         userLabel = new JLabel("主菜单:");        
         bookManageButton = new JButton("图书管理");
@@ -38,6 +42,7 @@ public class MainMenu extends JPanel implements ActionListener {
 		exitButton.addActionListener(this);
 		bookManageButton.addActionListener(this);
 		readerManageButton.addActionListener(this);
+		borrowManageButton.addActionListener(this);
 		
 		panel.add(userLabel);
 		panel.add(bookManageButton);
@@ -55,6 +60,8 @@ public class MainMenu extends JPanel implements ActionListener {
 			card.show(this, "bookMenu");
 		} else if (event.getSource() == readerManageButton) {
 			card.show(this, "readerMenu");
+		} else if (event.getSource() == borrowManageButton) {
+			card.show(this, "borrowMenu");
 		}
 	}
 	

@@ -1,4 +1,6 @@
 # library-management-system
+帮学弟写的作业——但愿不会被他老师看见
+
 
 ## Database initialization
 CREATE DATABASE IF NOT EXISTS library;
@@ -37,15 +39,17 @@ CREATE TABLE IF NOT EXISTS reader (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS borrow (
-    reader_id INTEGER,
-    book_id INTEGER,
-    borrow_date Date NOT NULL,
-    return_date Date,
-    PRIMARY KEY (reader_id, book_id),
-    FOREIGN KEY (reader_id) REFERENCES reader (id),
-    FOREIGN KEY (book_id) REFERENCES book (id)
-);
-
 INSERT INTO reader VALUES(1, "Alice", "W", "611731");
 INSERT INTO reader VALUES(2, "Bob", "M", "152133");
+
+CREATE TABLE IF NOT EXISTS borrow (
+    book_id INTEGER,
+    reader_id INTEGER,
+    borrow_date Date NOT NULL,
+    PRIMARY KEY (reader_id, book_id),
+    FOREIGN KEY (book_id) REFERENCES book (id),
+    FOREIGN KEY (reader_id) REFERENCES reader (id)
+);
+
+INSERT INTO borrow VALUES(1, 1, now());
+INSERT INTO borrow VALUES(2, 2, DATE("2016-6-12"));

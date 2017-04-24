@@ -52,5 +52,4 @@ public class ReaderDeletePanel extends JPanel implements ActionListener {
 			}
 		}		
 	}
-
 }

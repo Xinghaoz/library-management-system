@@ -1,18 +1,16 @@
 package reader_management;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import book_management.Book;
 import util.MySQLUtil;
 
 public class ReaderManager {
 	public static List<Reader> getAll() {
-		List<Reader> result = new ArrayList<Reader>();
+		List<Reader> result = new ArrayList<>();
 		Connection conn = MySQLUtil.getConnection();
 		String sql = "SELECT * FROM reader;";
 		try {
