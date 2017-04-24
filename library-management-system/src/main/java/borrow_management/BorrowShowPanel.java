@@ -1,5 +1,6 @@
 package borrow_management;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,7 +21,8 @@ public class BorrowShowPanel extends JPanel implements ActionListener {
 		table = new BorrowTable(BorrowManager.getAll());
         backButton = new JButton("返回");
         backButton.addActionListener(this);
-		
+		backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 		add(backButton);
 		add(table);
 	}

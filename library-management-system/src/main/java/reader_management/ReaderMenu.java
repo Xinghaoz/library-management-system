@@ -1,6 +1,7 @@
 package reader_management;
 
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -46,8 +47,14 @@ public class ReaderMenu extends JPanel implements ActionListener {
 		backButton.addActionListener(this);
 		deleteButton.addActionListener(this);
 		sortButton.addActionListener(this);
-
-		// BorderLayout.CENTER
+		
+		userLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		showButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		addButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		deleteButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		sortButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
 		panel.add(showButton);
 		panel.add(addButton);
 		panel.add(deleteButton);

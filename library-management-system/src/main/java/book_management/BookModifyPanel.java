@@ -28,9 +28,7 @@ public class BookModifyPanel extends JPanel implements ActionListener, TableMode
 	public BookModifyPanel(BookMenu previousLevel) {
 		this.previousLevel = previousLevel;
 				
-//		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        
-//		table = new BookTable(BookManager.getAll());
+
 		JLabel label = new JLabel("请输入需要修改的书号：");
 		
         backButton = new JButton("返回");
@@ -39,8 +37,7 @@ public class BookModifyPanel extends JPanel implements ActionListener, TableMode
         tablePanel = new JPanel();
         wrapperPanel = new JPanel();
         wrapperPanel.setPreferredSize(new Dimension(250, 100));
-//        
-//        text.setSize(new Dimension(100, 25));
+        
         text.setPreferredSize(new Dimension(250, 25));
         wrapperPanel.add(label);
         wrapperPanel.add(text);
@@ -50,11 +47,7 @@ public class BookModifyPanel extends JPanel implements ActionListener, TableMode
         backButton.addActionListener(this);
         searchButton.addActionListener(this);
 		
-//        add(label);
         add(wrapperPanel);
-//        add(text);
-//        add(searchButton);        
-//		add(backButton);
 		add(tablePanel);
 	}
 	
@@ -94,24 +87,18 @@ public class BookModifyPanel extends JPanel implements ActionListener, TableMode
 				private float price;
 				private String category;
 			 */
-//			table.repaint();
-//			commitButton.requestFocus();
-//			commitButton.requestFocusInWindow();
+
 			JTable temp = table.getTable();
 			temp.getParent().requestFocus();
 			temp.getParent().requestFocusInWindow();
-//			temp.requestFocus();
 			String id = (String) temp.getValueAt(0, 0);
 			String name = (String) temp.getValueAt(0, 1);
 			String author = (String) temp.getValueAt(0, 2);
 			String publisher = (String) temp.getValueAt(0, 3);
 			String dateStr = temp.getValueAt(0, 4).toString();
 			Float price = Float.valueOf(temp.getValueAt(0, 5).toString());
-//			String priceStr = (String) temp.getValueAt(0, 5);
 			String category = (String) temp.getValueAt(0, 6);
-			
-			System.out.println(id + "\n" + name + "\n" + author + "\n" + publisher + "\n" + dateStr + "\n" + price + "\n" + category + "\n");
-			
+						
 		}
 	}
 

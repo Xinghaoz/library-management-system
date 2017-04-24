@@ -33,11 +33,17 @@ public class MainMenu extends JPanel implements ActionListener {
 		add("readerMenu", readerMenu);
 		add("borrowMenu", borrowMenu);
 		
-        userLabel = new JLabel("主菜单:");        
+        userLabel = new JLabel("主菜单:");       
         bookManageButton = new JButton("图书管理");
 		readerManageButton = new JButton("读者管理");
 		borrowManageButton = new JButton("借还管理");
 		exitButton = new JButton("退出系统");
+		
+		userLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		bookManageButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		readerManageButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		borrowManageButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		exitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		exitButton.addActionListener(this);
 		bookManageButton.addActionListener(this);

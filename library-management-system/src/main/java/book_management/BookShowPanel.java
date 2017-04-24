@@ -1,6 +1,7 @@
 package book_management;
 
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
@@ -28,6 +29,7 @@ public class BookShowPanel extends JPanel implements ActionListener {
 		table = new BookTable(BookManager.getAll());
         backButton = new JButton("返回");
         backButton.addActionListener(this);
+		backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		add(backButton);
 		add(table);

@@ -30,10 +30,6 @@ public class BookSearchPanel extends JPanel implements ActionListener {
 	public BookSearchPanel(BookMenu previousLevel) {
 		this.previousLevel = previousLevel;
 				
-//		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        
-//		table = new BookTable(BookManager.getAll());
-//		JLabel label = new JLabel("请输入需要修改的书号：");
 		String[] options = {"书号", "书名", "作者", "出版", "日期", "定价", "类别"};
 		 
         backButton = new JButton("返回");
@@ -49,7 +45,6 @@ public class BookSearchPanel extends JPanel implements ActionListener {
         
         comboBox.setBorder(BorderFactory.createTitledBorder("请选择需要查询的字段")); 
         comboBox.setPreferredSize(new Dimension(166, 66));
-//        text.setSize(new Dimension(100, 25));
         text.setPreferredSize(new Dimension(100, 25));
         fromText.setPreferredSize(new Dimension(100, 25));
         toText.setPreferredSize(new Dimension(100, 25));
@@ -59,7 +54,6 @@ public class BookSearchPanel extends JPanel implements ActionListener {
         searchButton.addActionListener(this);
         comboBox.addActionListener(this);
 		
-//        add(label);
         add(comboBox);
         add(text);
         add(pricePanel);

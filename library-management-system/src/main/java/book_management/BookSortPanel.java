@@ -12,7 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class BookSortPanel extends JPanel implements ActionListener  {
+public class BookSortPanel extends JPanel implements ActionListener {
 	JButton backButton, sortButton, commitButton;
 	JPanel tablePanel;
 	JComboBox comboBox;

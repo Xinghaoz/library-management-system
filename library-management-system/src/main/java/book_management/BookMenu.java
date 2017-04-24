@@ -52,6 +52,15 @@ public class BookMenu extends JPanel implements ActionListener {
 		searchButton.addActionListener(this);
 		sortButton.addActionListener(this);
 		
+		userLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		showButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		modifyButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		addButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		deleteButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		searchButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		sortButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+				
 		// BorderLayout.CENTER
 		panel.add(showButton);
 		panel.add(modifyButton);
