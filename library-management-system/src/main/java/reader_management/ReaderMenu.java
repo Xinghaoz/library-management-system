@@ -12,13 +12,14 @@ import javax.swing.JPanel;
 import yanghongquan.library_management_system.MainMenu;
 
 public class ReaderMenu extends JPanel implements ActionListener {
-	JButton addButton, showButton, deleteButton, backButton;
+	JButton addButton, showButton, deleteButton, backButton, sortButton;
 	MainMenu previousLevel;
 	CardLayout card;
 	JPanel panel;
 	ReaderShowPanel readerShowPanel;
 	ReaderAddPanel readerAddPanel;
 	ReaderDeletePanel readerDeletePanel;
+	ReaderSortPanel readerSortPanel;
 	
 	public ReaderMenu(MainMenu previousLevel) {
 		this.previousLevel = previousLevel;
@@ -38,18 +39,21 @@ public class ReaderMenu extends JPanel implements ActionListener {
 		addButton = new JButton("添加读者");
 		deleteButton = new JButton("删除读者");
 		backButton = new JButton("返回");
-		
+		sortButton = new JButton("排序");
+
 		showButton.addActionListener(this);
 		addButton.addActionListener(this);
 		backButton.addActionListener(this);
 		deleteButton.addActionListener(this);
-		
+		sortButton.addActionListener(this);
+
 		// BorderLayout.CENTER
 		panel.add(showButton);
 		panel.add(addButton);
 		panel.add(deleteButton);
+		panel.add(sortButton);
 		panel.add(backButton);
-		
+
 	}
 	
 	@Override
@@ -68,7 +72,11 @@ public class ReaderMenu extends JPanel implements ActionListener {
 			readerDeletePanel = new ReaderDeletePanel(this);
 			add("readerDeletePanel", readerDeletePanel);
 			card.show(this, "readerDeletePanel");
-		} 		
+		} else if (event.getSource() == sortButton) {
+			readerSortPanel = new ReaderSortPanel(this);
+			add("readerSortPanel", readerSortPanel);
+			card.show(this, "readerSortPanel");
+		} 			
 	}
 	
 	public CardLayout getCard() {

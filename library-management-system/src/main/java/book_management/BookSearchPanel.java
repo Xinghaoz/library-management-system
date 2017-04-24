@@ -24,8 +24,6 @@ public class BookSearchPanel extends JPanel implements ActionListener {
 	BookMenu previousLevel;
 	BookTable table;
 	JPanel tablePanel, pricePanel;
-	TableModelListener listener;
-	AbstractTableModel a;
 	JComboBox comboBox;
 	String searchField = "id";
 	

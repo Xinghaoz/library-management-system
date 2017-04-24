@@ -32,7 +32,7 @@ public class BookTable extends JPanel {
 		String[] columns = {"书号", "书名", "作者", "出版", "日期", "定价", "类别"};
 		table = new JTable(data, columns);
 		table.setEnabled(false);
-		table.setPreferredScrollableViewportSize(new Dimension(550,100));
+		table.setPreferredScrollableViewportSize(new Dimension(550,320));
 		JScrollPane scrollPane = new JScrollPane(table);
 		add(scrollPane);
 	}

@@ -1,11 +1,13 @@
 package reader_management;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import reader_management.Reader;
 import util.MySQLUtil;
 
 public class ReaderManager {
@@ -77,5 +79,28 @@ public class ReaderManager {
             MySQLUtil.closeConnection(conn);  
         }		
 		return false;
+	}
+	
+	public static List<Reader> sortBy(String key) {
+		List<Reader> result = new ArrayList<>();
+		Connection conn = MySQLUtil.getConnection();
+		String sql = "SELECT * FROM reader ORDER BY " + key + ";";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery(); 
+			while (rs.next()) {
+				String id = rs.getString("id");
+				String name = rs.getString("name");
+				String gender = rs.getString("gender");
+				String studentNumber = rs.getString("student_number");
+				Reader reader = new Reader(id, name, gender, studentNumber);
+				result.add(reader);
+			}			
+		} catch (Exception e) {  
+            e.printStackTrace();  
+        } finally{  
+            MySQLUtil.closeConnection(conn);  
+        }
+		return result;
 	}
 }

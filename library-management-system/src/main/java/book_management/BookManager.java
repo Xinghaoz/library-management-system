@@ -198,6 +198,33 @@ public class BookManager {
         }
 		return result;
 	}
+	
+	public static List<Book> sortBy(String key) {
+		List<Book> result = new ArrayList<>();
+		Connection conn = MySQLUtil.getConnection();
+		String sql = "SELECT * FROM book ORDER BY " + key + ";";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery(); 
+			while (rs.next()) {
+				String id = rs.getString("id");
+				String name = rs.getString("name");
+				String author = rs.getString("author");
+				String publisher = rs.getString("publisher");
+				Date date = (Date) rs.getDate("date");
+				float price = rs.getFloat("price");
+				String category = rs.getString("category");
+				Book book = new Book(id, name, author, publisher, date, price, category);
+				result.add(book);
+			}
+			
+		} catch (Exception e) {  
+            e.printStackTrace();  
+        } finally{  
+            MySQLUtil.closeConnection(conn);  
+        }
+		return result;
+	}
 		
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

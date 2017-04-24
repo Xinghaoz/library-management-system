@@ -20,6 +20,7 @@ public class BookMenu extends JPanel implements ActionListener {
 	BookDeletePanel bookDeletePanel;
 	BookModifyPanel bookModifyPanel;
 	BookSearchPanel bookSearchPanel;
+	BookSortPanel bookSortPanel;
 	
 	public BookMenu(JPanel previousLevel) {
 		this.previousLevel = (MainMenu) previousLevel;
@@ -49,6 +50,7 @@ public class BookMenu extends JPanel implements ActionListener {
 		backButton.addActionListener(this);
 		deleteButton.addActionListener(this);
 		searchButton.addActionListener(this);
+		sortButton.addActionListener(this);
 		
 		// BorderLayout.CENTER
 		panel.add(showButton);
@@ -56,6 +58,7 @@ public class BookMenu extends JPanel implements ActionListener {
 		panel.add(addButton);
 		panel.add(deleteButton);
 		panel.add(searchButton);
+		panel.add(sortButton);
 		panel.add(backButton);
 	}
 	
@@ -82,6 +85,10 @@ public class BookMenu extends JPanel implements ActionListener {
 			bookSearchPanel = new BookSearchPanel(this);
 			add("bookSearchPanel", bookSearchPanel);
 			card.show(this, "bookSearchPanel");
+		} else if (event.getSource() == sortButton) {
+			bookSortPanel = new BookSortPanel(this);
+			add("bookSortPanel", bookSortPanel);
+			card.show(this, "bookSortPanel");
 		}
 	}
 	
