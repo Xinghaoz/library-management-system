@@ -74,17 +74,4 @@ public class MainMenu extends JPanel implements ActionListener {
 	public CardLayout getCard() {
 		return this.card;
 	}
-
-	public static void main(String[] args) {
-		Main main = new Main();
-		
-//		JFrame frame = new JFrame("Test");
-//		frame.setSize(1000, 1000);
-//		JPanel menu = new MainMenu();
-////		menu.setLayout(null);
-////		frame.add(menu);
-//		frame.add(menu);
-//		frame.setVisible(true);
-	}
-
 }

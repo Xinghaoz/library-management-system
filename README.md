@@ -56,3 +56,9 @@ CREATE TABLE IF NOT EXISTS borrow (
 
 INSERT INTO borrow VALUES(1, 1, now());
 INSERT INTO borrow VALUES(2, 2, DATE("2016-6-12"));
+
+WITH b_date AS (SELECT borrow_date FROM borrow WHERE book_id = 2 AND reader_id = 2)
+SELECT DATE(now()) - SELECT * FROM b_date;
+
+SELECT TIMESTAMPDIFF(DAY, '2009-07-29', DATE(now()));
+SELECT TIMESTAMPDIFF(DAY, (SELECT borrow_date FROM borrow WHERE book_id = 2 AND reader_id = 2), DATE(now())) AS DIFF;

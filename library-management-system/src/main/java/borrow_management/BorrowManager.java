@@ -34,6 +34,35 @@ public class BorrowManager {
 		return result;
 	}
 	
+	public static List<Expire> getExpireReaders() {
+		List<Expire> result = new ArrayList<>();
+		Connection conn = MySQLUtil.getConnection();
+		String sql = "SELECT * FROM borrow WHERE DATE(now()) - borrow_date > 15;";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery(); 
+			while (rs.next()) {
+				String bookId = rs.getString("book_id");
+				String readerId = rs.getString("reader_id");
+				Date borrowDate = (Date) rs.getDate("borrow_date");
+				sql = "SELECT TIMESTAMPDIFF(DAY, (SELECT borrow_date FROM borrow WHERE book_id = ? AND reader_id = ?), DATE(now())) AS DIFF;";
+				PreparedStatement ps2 = conn.prepareStatement(sql);
+		        ps2.setString(1, bookId);  
+	            ps2.setString(2, readerId);
+				ResultSet rs2 = ps2.executeQuery(); 
+				if (rs2.next()) {
+					Expire expire = new Expire(bookId, readerId, borrowDate, rs2.getInt("DIFF"));
+					result.add(expire);
+				}
+			}
+		} catch (Exception e) {  
+            e.printStackTrace();  
+        } finally{  
+            MySQLUtil.closeConnection(conn);  
+        }
+		return result;
+	}
+	
 	public static int add(String bookId, String readerId) {
 		Connection conn = MySQLUtil.getConnection(); 
 		String sql = "SELECT * FROM book WHERE id = " + bookId + ";";
@@ -141,12 +170,6 @@ public class BorrowManager {
             ps.setString(2, readerId);
             ps.execute();
 	      
-//	        
-//	        sql = "UPDATE borrow SET return_date = now() WHERE book_id = ? AND reader_id = ?;";
-//	        ps = conn.prepareStatement(sql);
-//	        ps.setString(1, bookId);  
-//            ps.setString(2, readerId);
-//            ps.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return 4;
@@ -154,41 +177,6 @@ public class BorrowManager {
 		return 0;
 	}
 	
-//	public static int returnBook(String bookId, String readerId, String borrowDate) {
-//		Connection conn = MySQLUtil.getConnection(); 
-//		String sql = "SELECT * FROM book WHERE id = " + bookId + ";";
-//		try {
-//			PreparedStatement ps = conn.prepareStatement(sql);
-//			ResultSet rs = ps.executeQuery();  
-//	        if (!rs.next()){  
-//	        	return 1;
-//	        } 
-//	        
-//	        sql = "SELECT * FROM reader WHERE id = " + readerId + ";";
-//	        ps = conn.prepareStatement(sql);
-//			rs = ps.executeQuery();  
-//	        if (!rs.next()){  
-//	        	return 2;
-//	        }    
-//	        sql = "SELECT * FROM borrow WHERE book_id = " + bookId + " AND reader_id = " + readerId + ";";
-//	        ps = conn.prepareStatement(sql);
-//			rs = ps.executeQuery();  
-//	        if (!rs.next()){  
-//	        	return 3;
-//	        } 
-//	        
-//	        sql = "UPDATE borrow SET return_date = DATE(\"?\") WHERE book_id = ? AND reader_id = ?;";
-//	        ps = conn.prepareStatement(sql);
-//	        ps.setString(1, bookId);  
-//            ps.setString(2, readerId);
-//            ps.setString(3, borrowDate);
-//            ps.execute();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return 4;
-//		}		
-//		return 0;
-//	}
 	
 	public static int checkCanBorrow(Connection conn, String readerId) {
         String sql = "SELECT COUNT(*) AS count FROM borrow WHERE reader_id = ?;";

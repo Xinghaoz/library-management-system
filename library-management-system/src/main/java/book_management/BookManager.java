@@ -88,7 +88,6 @@ public class BookManager {
 	}
 	
 	public static Book get(String queryId) {
-//		List<Book> result = new ArrayList<Book>();
 		Connection conn = MySQLUtil.getConnection();
 		String sql = "SELECT * FROM book WHERE id = " + queryId + ";";
 		try {
@@ -103,7 +102,6 @@ public class BookManager {
 				float price = rs.getFloat("price");
 				String category = rs.getString("category");
 				Book book = new Book(id, name, author, publisher, date, price, category);
-//				result.add(book);
 				return book;
 			}
 		} catch (Exception e) {  
@@ -227,7 +225,6 @@ public class BookManager {
 	}
 		
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 //		List<Book> list = BookManager.getAll();
 		List<Book> list = BookManager.search("author", "li");
 		for (Book b : list) {

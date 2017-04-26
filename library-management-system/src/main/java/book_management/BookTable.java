@@ -16,7 +16,6 @@ public class BookTable extends JPanel {
 	public BookTable(List<Book> books) {
 		Object[][] data = new Object[books.size()][7];
 		
-//		System.out.println("Create table");
 		int i = 0;
 		for (Book book : books) {
 			data[i][0] = book.getId();
@@ -74,7 +73,6 @@ public class BookTable extends JPanel {
 		String[] columns = {"书号", "书名", "作者", "出版", "日期", "定价", "类别"};
 		table = new JTable(data, columns);
 		table.setEnabled(canModify);
-//		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.setPreferredScrollableViewportSize(new Dimension(550,25));
 		JScrollPane scrollPane = new JScrollPane(table);
 		add(scrollPane);
@@ -82,22 +80,6 @@ public class BookTable extends JPanel {
 	
 	public JTable getTable() {
 		return table;
-	}
-
-	public static void main(String[] args) {
-		Main main = new Main();
-//		JFrame frame = new JFrame("图书管理系统");
-//        frame.setSize(666, 250);
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setTitle("图书信息管理系统");
-//        
-//        BookTable panel = new BookTable(BookManager.getAll());
-//        frame.add(panel);
-////        for (Book book : books) {
-////        	System.out.println(book);
-////        }
-//        
-//        frame.setVisible(true);
 	}
 
 }

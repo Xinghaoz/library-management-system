@@ -18,7 +18,6 @@ public class Main implements ActionListener {
 	JPanel panel, loginPanel;
 	JTextField userText, passwordText;
 	JButton loginButton;
-//	FlowLayout layout = new FlowLayout(); 
     CardLayout card; 
     int numberOfTry;
 
@@ -88,7 +87,6 @@ public class Main implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		// 用户登录
 		if (event.getSource() == loginButton) {
-//			card.show(panel, "mainMenu");			
 			String username = userText.getText();
 			String password = passwordText.getText();
 			if (username.isEmpty() || password.isEmpty()) {
