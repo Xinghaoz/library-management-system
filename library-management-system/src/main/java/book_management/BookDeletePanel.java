@@ -20,10 +20,6 @@ public class BookDeletePanel extends JPanel implements ActionListener {
 	public BookDeletePanel(BookMenu previousLevel) {
 		this.previousLevel = previousLevel;
 				
-//		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		
-//        title = new JLabel("图书管理:");
-//        panel.add(title);
 		JLabel idLabel = new JLabel("请输入需要删除的书号");
 		idText = new JTextField();
 		idText.setPreferredSize(new Dimension(100, 25));
@@ -37,7 +33,6 @@ public class BookDeletePanel extends JPanel implements ActionListener {
         add(idText);
 		add(commitButton);
 		add(backButton);
-//		add(table);
 	}
 	
 	public void actionPerformed(ActionEvent event) {

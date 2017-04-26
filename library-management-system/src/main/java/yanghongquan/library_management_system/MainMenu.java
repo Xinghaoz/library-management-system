@@ -60,8 +60,10 @@ public class MainMenu extends JPanel implements ActionListener {
 	
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == exitButton) {
-			System.out.println("Exit!");
-			System.exit(0);
+			int n = JOptionPane.showConfirmDialog(null, "确认退出吗?", "系统信息",JOptionPane.YES_NO_OPTION);
+			if (n == 0) {
+				System.exit(0);
+			}
 		} else if (event.getSource() == bookManageButton) {
 			card.show(this, "bookMenu");
 		} else if (event.getSource() == readerManageButton) {

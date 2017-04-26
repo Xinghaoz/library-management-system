@@ -22,9 +22,6 @@ public class BookShowPanel extends JPanel implements ActionListener {
 		this.previousLevel = previousLevel;
 				
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		
-//        title = new JLabel("图书管理:");
-//        panel.add(title);
         
 		table = new BookTable(BookManager.getAll());
         backButton = new JButton("返回");
@@ -38,7 +35,6 @@ public class BookShowPanel extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == backButton) {
 			previousLevel.getCard().show(previousLevel, "mainPanel");
-//			card.show(this, "previousLevel");
 		} 
 	}
 }

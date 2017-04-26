@@ -3,9 +3,11 @@
 /Users/Signal/github/library-management-system/library-management-system/src/main/java/auth/Auth.java
 /Users/Signal/github/library-management-system/library-management-system/src/main/java/yanghongquan/library_management_system/Main.java
 /Users/Signal/github/library-management-system/library-management-system/src/main/java/reader_management/ReaderDeletePanel.java
+/Users/Signal/github/library-management-system/library-management-system/src/main/java/borrow_management/ExpireTable.java
 /Users/Signal/github/library-management-system/library-management-system/src/main/java/book_management/BookSearchPanel.java
 /Users/Signal/github/library-management-system/library-management-system/src/main/java/yanghongquan/library_management_system/MainMenu.java
 /Users/Signal/github/library-management-system/library-management-system/src/main/java/reader_management/ReaderAddPanel.java
+/Users/Signal/github/library-management-system/library-management-system/src/main/java/borrow_management/Expire.java
 /Users/Signal/github/library-management-system/library-management-system/src/main/java/book_management/BookShowPanel.java
 /Users/Signal/github/library-management-system/library-management-system/src/main/java/reader_management/ReaderTable.java
 /Users/Signal/github/library-management-system/library-management-system/src/main/java/book_management/BookMenu.java
@@ -27,3 +29,4 @@
 /Users/Signal/github/library-management-system/library-management-system/src/main/java/borrow_management/BorrowDeletePanel.java
 /Users/Signal/github/library-management-system/library-management-system/src/main/java/book_management/Book.java
 /Users/Signal/github/library-management-system/library-management-system/src/main/java/book_management/BookManager.java
+/Users/Signal/github/library-management-system/library-management-system/src/main/java/borrow_management/ExpirePanel.java
