@@ -1,5 +1,7 @@
 Manifest-Version: 1.0
 Built-By: Signal
+Class-Path: lib/mysql-connector-java-6.0.6.jar
 Build-Jdk: 1.8.0_60
 Created-By: Maven Integration for Eclipse
+Main-Class: yanghongquan.library_management_system.Main
 

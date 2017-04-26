@@ -118,7 +118,10 @@ public class BorrowDeletePanel extends JPanel implements ActionListener, ItemLis
 						}
 					}
 					String date = year + "-" + month + "-" + day;
-					result = BorrowManager.returnBook(bookId, readerId);
+					int n = JOptionPane.showConfirmDialog(null, "书号为[" + bookId + "]，读者卡号为[" + readerId + "]，确认还书？", "系统信息",JOptionPane.YES_NO_OPTION);
+						if (n == 0) {
+						result = BorrowManager.returnBook(bookId, readerId);
+					}
 				}
 				if (result == 0) {
 					JOptionPane.showMessageDialog(null, "还书成功！", "系统信息", JOptionPane.PLAIN_MESSAGE);

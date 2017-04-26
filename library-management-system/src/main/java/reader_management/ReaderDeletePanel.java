@@ -44,11 +44,14 @@ public class ReaderDeletePanel extends JPanel implements ActionListener {
 			previousLevel.getCard().show(previousLevel, "mainPanel");
 		} else if (event.getSource() == commitButton) {
 			String id = idText.getText();
-			if (ReaderManager.delete(id)) {
-				JOptionPane.showMessageDialog(null, "删除成功！", "系统信息", JOptionPane.PLAIN_MESSAGE);
-				idText.setText("");
-			} else {
-				JOptionPane.showMessageDialog(null, "此读者不存在！", "系统信息", JOptionPane.PLAIN_MESSAGE);
+			int n = JOptionPane.showConfirmDialog(null, "确认删除卡号为" + id + "的读者吗?", "系统信息",JOptionPane.YES_NO_OPTION);
+			if (n == 0) {
+				if (ReaderManager.delete(id)) {
+					JOptionPane.showMessageDialog(null, "删除成功！", "系统信息", JOptionPane.PLAIN_MESSAGE);
+					idText.setText("");
+				} else {
+					JOptionPane.showMessageDialog(null, "此读者不存在！", "系统信息", JOptionPane.PLAIN_MESSAGE);
+				}
 			}
 		}		
 	}

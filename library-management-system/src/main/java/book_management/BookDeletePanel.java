@@ -45,12 +45,18 @@ public class BookDeletePanel extends JPanel implements ActionListener {
 			previousLevel.getCard().show(previousLevel, "mainPanel");
 		} else if (event.getSource() == commitButton) {
 			String id = idText.getText();
-//			System.out.println("id = " + id);
-			if (BookManager.delete(id)) {
-				JOptionPane.showMessageDialog(null, "删除成功！", "系统信息", JOptionPane.PLAIN_MESSAGE);
-				idText.setText("");
+			if (id.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "书号不能为空！", "系统信息", JOptionPane.PLAIN_MESSAGE);
 			} else {
-				JOptionPane.showMessageDialog(null, "此书号不存在！", "系统信息", JOptionPane.PLAIN_MESSAGE);
+				int n = JOptionPane.showConfirmDialog(null, "确认删除书号为" + id + "的图书吗?", "系统信息",JOptionPane.YES_NO_OPTION);
+				if (n == 0) {
+					if (BookManager.delete(id)) {
+						JOptionPane.showMessageDialog(null, "删除成功！", "系统信息", JOptionPane.PLAIN_MESSAGE);
+						idText.setText("");
+					} else {
+						JOptionPane.showMessageDialog(null, "此书号不存在！", "系统信息", JOptionPane.PLAIN_MESSAGE);
+					}
+				}
 			}
 		}
 	}

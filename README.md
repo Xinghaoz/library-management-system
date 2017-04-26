@@ -1,6 +1,9 @@
 # library-management-system
 帮学弟写的作业——但愿不会被他老师看见
 
+## Change MYSQL password
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'yhq';
 
 ## Database initialization
 CREATE DATABASE IF NOT EXISTS library;

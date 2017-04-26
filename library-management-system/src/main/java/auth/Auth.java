@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.swing.JOptionPane;
+
 import util.MySQLUtil;
 
 public class Auth {
@@ -20,8 +22,8 @@ public class Auth {
             	isAuthenticated = true;
             }  
             rs.close();  
-
         } catch (Exception e) {  
+			JOptionPane.showMessageDialog(null, "登录过程中数据库出错！", "系统信息", JOptionPane.PLAIN_MESSAGE);
             e.printStackTrace();  
         } finally{  
             MySQLUtil.closeConnection(conn);  

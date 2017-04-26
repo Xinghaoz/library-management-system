@@ -5,16 +5,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 public class MySQLUtil {
     public static Connection getConnection(){  
         Connection conn = null;  
         try {  
+//        	Class.forName("com.mysql.jdbc.Driver");
 //          Class.forName("com.mysql.jdbc.Driver");  
-//        	Class.forName("com.mysql.cj.jdbc.Driver");
+        	Class.forName("com.mysql.cj.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/library?serverTimezone=UTC&useSSL=false";  
             conn = DriverManager.getConnection(url, "root", "yhq");  
         } catch (Exception e) {  
-        	System.out.println("数据库连接错误！");
+			JOptionPane.showMessageDialog(null, "数据库连接错误！", "系统信息", JOptionPane.PLAIN_MESSAGE);
             e.printStackTrace();  
         }  
         return conn;  

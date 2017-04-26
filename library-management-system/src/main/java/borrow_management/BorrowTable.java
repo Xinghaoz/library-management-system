@@ -22,7 +22,7 @@ public class BorrowTable extends JPanel {
 			i++;
 		}
 		
-		String[] columns = {"读者卡号", "书号", "借书日期"};
+		String[] columns = {"书号", "读者卡号", "借书日期"};
 		table = new JTable(data, columns);
 		table.setEnabled(false);
 		table.setPreferredScrollableViewportSize(new Dimension(500,250));

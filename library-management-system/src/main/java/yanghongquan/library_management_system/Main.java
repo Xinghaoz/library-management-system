@@ -20,10 +20,12 @@ public class Main implements ActionListener {
 	JButton loginButton;
 //	FlowLayout layout = new FlowLayout(); 
     CardLayout card; 
+    int numberOfTry;
 
 	MainMenu mainMenu;
 	
 	public Main() {
+		numberOfTry = 3;
         frame = new JFrame("图书管理系统");
         frame.setSize(666, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,7 +98,11 @@ public class Main implements ActionListener {
 					JOptionPane.showMessageDialog(null, "登录成功！", "系统信息", JOptionPane.PLAIN_MESSAGE);	
 					card.show(panel, "mainMenu");
 				} else {
-					JOptionPane.showMessageDialog(null, "用户名或密码错误！", "系统信息", JOptionPane.PLAIN_MESSAGE);	
+					if (--numberOfTry == 0) {
+						JOptionPane.showMessageDialog(null, "三次输入错误，退出程序！", "系统信息", JOptionPane.PLAIN_MESSAGE);	
+						System.exit(0);
+					}
+					JOptionPane.showMessageDialog(null, "用户名或密码错误！你还有" + numberOfTry + "次机会！", "系统信息", JOptionPane.PLAIN_MESSAGE);	
 				}
 			}
 		}
